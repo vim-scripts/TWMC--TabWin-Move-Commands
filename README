@@ -1,0 +1,60 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=4846
+
+For more information, please see https://github.com/yssl/TWMC.
+
+# TWMC: Tab/Win Move Commands
+
+TWMC is a set of useful commands for moving a tab, window or a cursor between vim's tabs / windows.
+It provides additional useful commands such as maxmizing a window.  
+
+TWMC is composed of three commands:
+- Winmove : Move the current window between windows.
+- Tabcmd : `:wincmd`-style tab management command including moving commands for a cursor between tabs.
+- WincmdEx : Extension of the original `:wincmd`.
+
+Each command has several sub-commands called by `:wincmd`-style single character arguments.
+
+## Winmove
+
+In vim normal mode, you can just type `:Winmove {arg}` (similar to `:wincmd {arg}`).  
+List of available `{arg}` is:
+
+{arg} | Winmove
+---   | ---
+h     | Move current window to left.
+l     | Move current window to right.
+j     | Move current window to down.
+k     | Move current window to up.
+p     | Move current window to location of previously focused window.
+
+and all other arguments used in `:wincmd` that move a cursor such as w, W, t, b.
+
+## Tabcmd
+
+In normal mode, just type `:Tabcmd {arg}`.
+
+{arg} | Tabcmd
+---   | ---
+h     | Go to the left tab page.
+l     | Go to the right tab page.
+W     | Go to the left tab page. Wraps around from the first to the last one.
+w     | Go to the right tab page. Wraps around from the last to the first one.
+t     | Go to the first tab page.
+b     | Go to the last tab page.
+p     | Go to the previous tab page.
+q     | Close current tab page and move focus to previously focused one.
+n     | Open a new tab page with an empty window, after the current tab page.
+o     | Close all other tab pages.
+
+## WincmdEx
+
+This command overrides the original `:wincmd` command.  
+In normal mode, just type `:WincmdEx {arg}`.
+
+{arg} | WincmdEx
+---   | ---
+q     | Quit current window and move cursor to previously focused one.
+m     | Toggle maximizing current window.
+
+and all other arguments used in `:wincmd`.
+
