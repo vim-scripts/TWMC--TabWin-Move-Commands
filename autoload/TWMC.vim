@@ -5,6 +5,42 @@
 
 " script variable
 
+" Winmove functions
+fun! TWMC#Winmove(arg)
+	let winnr1 = winnr()
+	call TWMC#WincmdEx(a:arg)
+	let winnr2 = winnr()
+	call s:MoveWin(winnr1, winnr2)
+endfun
+
+fun! s:MoveWin(winnr1, winnr2)
+	if a:winnr1==a:winnr2 
+		return
+	endif
+
+	exec a:winnr1.'wincmd w'
+	let bufnr1 = winbufnr(a:winnr1)
+	let view1 = winsaveview()
+	"mkview! 0
+
+	exec a:winnr2.'wincmd w'
+	let bufnr2 = winbufnr(a:winnr2)
+	let view2 = winsaveview()
+	"mkview! 1
+
+	execute 'buffer'.bufnr1
+	call winrestview(view1)
+	"loadview 0
+
+	wincmd p
+	exec 'buffer'.bufnr2
+	call winrestview(view2)
+	"loadview 1
+
+	wincmd p
+endfun
+
+
 " Tabcmd functions
 fun! TWMC#Tabcmd(arg)
 	if a:arg==#'h'

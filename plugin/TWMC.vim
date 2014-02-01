@@ -23,6 +23,7 @@ if !exists('g:twmc_prevwinnr')
 endif
 
 " commands
+command! -nargs=1 Winmove call TWMC#Winmove(<f-args>)
 command! -nargs=1 Tabcmd call TWMC#Tabcmd(<f-args>)
 command! -nargs=1 WincmdEx call TWMC#WincmdEx(<f-args>)
 
